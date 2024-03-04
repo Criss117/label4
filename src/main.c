@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "struct.h"
 #include "persona.h"
+#include "archivo.h"
 
 int main(){
   Agendas* cabezaAgendas = NULL;
@@ -34,9 +35,5 @@ int main(){
 
   Persona persona1 = {"123456789", "Juan", "Perez", "Calle 123", "123456789", "juan@example.com", "AB", pregradosPersona1, posgradosPersona1, experienciasPersona1};
   agregarPersona(&cabezaAgendas, persona1);
-
-  printf("Lista de personas:\n");
-  imprimirLista(cabezaAgendas);
-
   return 0;
 }

@@ -14,19 +14,19 @@ void guardarEnArchivo(Persona persona){
   }
   fprintf(fp, "00\n");
 
-  fprintf(fp, "cedula: %s\n", persona.cedula);
-  fprintf(fp, "nombre: %s\n", persona.nombre);
-  fprintf(fp, "apellido: %s\n", persona.apellido);
-  fprintf(fp, "direccion: %s\n", persona.direccion);
-  fprintf(fp, "telefono: %s\n", persona.telefono);
-  fprintf(fp, "persona: %s\n", persona.email);
-  fprintf(fp, "tipoSangre: %s\n", persona.tipoSangre);
+  fprintf(fp, "%s\n", persona.cedula);
+  fprintf(fp, "%s\n", persona.nombre);
+  fprintf(fp, "%s\n", persona.apellido);
+  fprintf(fp, "%s\n", persona.direccion);
+  fprintf(fp, "%s\n", persona.telefono);
+  fprintf(fp, "%s\n", persona.email);
+  fprintf(fp, "%s\n", persona.tipoSangre);
 
   fprintf(fp, "01\n");
 
   Pregrados *pregradoActual = persona.pregrados;
   while (pregradoActual != NULL) {
-    fprintf(fp, "titulo: %s\n", pregradoActual->pregrado.titulo);
+    fprintf(fp, "%s\n", pregradoActual->pregrado.titulo);
     pregradoActual = pregradoActual->sig;
   }
 
@@ -34,8 +34,8 @@ void guardarEnArchivo(Persona persona){
 
   Posgrados *posgradoActual = persona.posgrados;
   while (posgradoActual != NULL) {
-    fprintf(fp, "titulo: %s\n", posgradoActual->posgrado.titulo);
-    fprintf(fp, "nivel: %s\n", posgradoActual->posgrado.nivel);
+    fprintf(fp, "%s\n", posgradoActual->posgrado.titulo);
+    fprintf(fp, "%s\n", posgradoActual->posgrado.nivel);
     posgradoActual = posgradoActual->sig;
   }
 
@@ -43,10 +43,10 @@ void guardarEnArchivo(Persona persona){
 
   Experiencias *experienciasActual = persona.experiencias;
   while (experienciasActual != NULL) {
-    fprintf(fp, "empresa: %s\n", experienciasActual->experiencia.empresa);
-    fprintf(fp, "cargo: %s\n", experienciasActual->experiencia.cargo);
-    fprintf(fp, "fechaIncio: %s\n", experienciasActual->experiencia.fechaInicio);
-    fprintf(fp, "fechaFin: %s\n", experienciasActual->experiencia.fechaFin);
+    fprintf(fp, "%s\n", experienciasActual->experiencia.empresa);
+    fprintf(fp, "%s\n", experienciasActual->experiencia.cargo);
+    fprintf(fp, "%s\n", experienciasActual->experiencia.fechaInicio);
+    fprintf(fp, "%s\n", experienciasActual->experiencia.fechaFin);
     experienciasActual = experienciasActual->sig;
   }
   fclose(fp);
@@ -55,46 +55,41 @@ void guardarEnArchivo(Persona persona){
 }
 
 void leerArchivo(){
-  FILE *fp = fopen(FILENAME, "r");
+  FILE *file = fopen(FILENAME, "r");
   char linea[MAX_LINE_LENGTH];
 
-  if(fp == NULL){
+  if(file == NULL){
     printf("Error al abrir el archivo.\n");
     exit(1);
   }
 
-  while(fgets(linea, MAX_LINE_LENGTH, fp) != NULL){
+  while(fgets(linea, MAX_LINE_LENGTH, file)){
     linea[strcspn(linea, "\n")] = 0;
 
     if(strcmp(linea, "00") == 0){
-      printf("Cedula: ");
-      fgets(linea, MAX_LINE_LENGTH, fp);
+      fgets(linea, MAX_LINE_LENGTH, file);
       linea[strcspn(linea, "\n")] = 0;
       printf("%s\n", linea);
-      printf("Nombre: ");
-      fgets(linea, MAX_LINE_LENGTH, fp);
+      fgets(linea, MAX_LINE_LENGTH, file);
       linea[strcspn(linea, "\n")] = 0;
       printf("%s\n", linea);
-      printf("Apellido: ");
-      fgets(linea, MAX_LINE_LENGTH, fp);
+      fgets(linea, MAX_LINE_LENGTH, file);
       linea[strcspn(linea, "\n")] = 0;
       printf("%s\n", linea);
-      printf("Dirección: ");
-      fgets(linea, MAX_LINE_LENGTH, fp);
+      fgets(linea, MAX_LINE_LENGTH, file);
       linea[strcspn(linea, "\n")] = 0;
       printf("%s\n", linea);
     }
-    // if(strcmp(linea, "01") == 0){
-    //   printf("Pregrados: \n");
-    //   fgets(linea, MAX_LINE_LENGTH, fp);
-    //   linea[strcspn(linea, "\n")] = 0;
-    //   while(strcmp(linea, "02") != 0){
-    //     printf("%s\n", linea);
-    //     fgets(linea, MAX_LINE_LENGTH, fp);
-    //     linea[strcspn(linea, "\n")] = 0;
-    //   }
-    // }
+    if(strcmp(linea, "01") == 0){
+      fgets(linea, MAX_LINE_LENGTH, file);
+      linea[strcspn(linea, "\n")] = 0;
+      while(strcmp(linea, "02") != 0){
+        printf("%s\n", linea);
+        fgets(linea, MAX_LINE_LENGTH, file);
+        linea[strcspn(linea, "\n")] = 0;
+      }
+    }
   }
-  fclose(fp);
+  fclose(file);
 
 }

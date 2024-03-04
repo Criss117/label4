@@ -15,6 +15,8 @@
 #include "archivo.h"
 
 int main(){
+  // leerArchivo();
+
   Agendas* cabezaAgendas = NULL;
 
   Pregrados *pregradosPersona1 = NULL;

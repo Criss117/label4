@@ -1,25 +1,25 @@
 00
-cedula: 123456789
-nombre: Juan
-apellido: Perez
-direccion: Calle 123
-telefono: 123456789
-persona: juan@example.com
-tipoSangre: AB
+123456789
+Juan
+Perez
+Calle 123
+123456789
+juan@example.com
+AB
 01
-titulo: Arquitectura
-titulo: Ingeniería Civil
+Arquitectura
+Ingeniería Civil
 02
-titulo: Lic. en Negocios 2
-nivel: Licenciatura
-titulo: Lic. en Negocios
-nivel: Licenciatura
+Lic. en Negocios 2
+Licenciatura
+Lic. en Negocios
+Licenciatura
 03
-empresa: empresa 2
-cargo: cargo 2
-fechaIncio: 2022-01-01
-fechaFin: 2022-01-01
-empresa: empresa 1
-cargo: cargo 1
-fechaIncio: 2022-01-01
-fechaFin: 2022-01-01
+empresa 2
+cargo 2
+2022-01-01
+2022-01-01
+empresa 1
+cargo 1
+2022-01-01
+2022-01-01

@@ -61,44 +61,51 @@ void agregarExperiencia(Experiencias** cabeza, Experiencia experiencia){
 
 void imprimirLista(Agendas* cabeza){
   Agendas *actual = cabeza;
-    while (actual != NULL) {
-      printf("Cedula: %s\n", actual->persona.cedula);
-      printf("Nombre: %s\n", actual->persona.nombre);
-      printf("Apellido: %s\n", actual->persona.apellido);
-      printf("Dirección: %s\n", actual->persona.direccion);
-      printf("Teléfono: %s\n", actual->persona.telefono);
-      printf("Email: %s\n", actual->persona.email);
-      printf("Tipo de Sangre: %s\n", actual->persona.tipoSangre);
-      
-      // Imprimir los pregrados de la persona
-      if(actual->persona.pregrados != NULL) {
-        Pregrados *pregradoActual = actual->persona.pregrados;
-        while (pregradoActual != NULL) {
-          printf("Pregrado: %s\n", pregradoActual->pregrado.titulo);
-          pregradoActual = pregradoActual->sig;
-        }
-      }
 
-      if(actual->persona.posgrados != NULL) {
-        Posgrados *posgradoActual = actual->persona.posgrados;
-        while (posgradoActual != NULL) {
-          printf("Posgrado: %s, %s\n", posgradoActual->posgrado.titulo, posgradoActual->posgrado.nivel);
-          posgradoActual = posgradoActual->sig;
-        }
-      }
+  if (actual == NULL) {
+    printf("La agenda esta vacia.\n");
+    return;
+  }
 
-      printf("\n");
-      
-      if(actual->persona.experiencias != NULL) {
-        Experiencias *experienciasActual = actual->persona.experiencias;
-        while (experienciasActual != NULL) {
-          printf("Experiencia: %s, %s\n", experienciasActual->experiencia.empresa, experienciasActual->experiencia.cargo);
-          experienciasActual = experienciasActual->sig;
-        }
+  printf("\n-----------Agenda:--------------\n");
+
+  while (actual != NULL) {
+    printf("Cedula: %s\n", actual->persona.cedula);
+    printf("Nombre: %s\n", actual->persona.nombre);
+    printf("Apellido: %s\n", actual->persona.apellido);
+    printf("Dirección: %s\n", actual->persona.direccion);
+    printf("Teléfono: %s\n", actual->persona.telefono);
+    printf("Email: %s\n", actual->persona.email);
+    printf("Tipo de Sangre: %s\n", actual->persona.tipoSangre);
+    
+    // Imprimir los pregrados de la persona
+    if(actual->persona.pregrados != NULL) {
+      Pregrados *pregradoActual = actual->persona.pregrados;
+      while (pregradoActual != NULL) {
+        printf("Pregrado: %s\n", pregradoActual->pregrado.titulo);
+        pregradoActual = pregradoActual->sig;
       }
-      
-      actual = actual->sig;
     }
+
+    if(actual->persona.posgrados != NULL) {
+      Posgrados *posgradoActual = actual->persona.posgrados;
+      while (posgradoActual != NULL) {
+        printf("Posgrado: %s, %s\n", posgradoActual->posgrado.titulo, posgradoActual->posgrado.nivel);
+        posgradoActual = posgradoActual->sig;
+      }
+    }
+    
+    if(actual->persona.experiencias != NULL) {
+      Experiencias *experienciasActual = actual->persona.experiencias;
+      while (experienciasActual != NULL) {
+        printf("Experiencia: %s, %s\n", experienciasActual->experiencia.empresa, experienciasActual->experiencia.cargo);
+        experienciasActual = experienciasActual->sig;
+      }
+    }
+    
+    actual = actual->sig;
+  }
+  printf("\n-----------Agenda:--------------\n");
 }
 
 void liberarMemoria(Agendas* cabeza ){
@@ -130,17 +137,76 @@ void buscarProfesion(Agendas* cabeza, Pregrado pregrado){
   imprimirLista(profesiones);
 }
 
-void buscarPorEmpresa(Agendas* cabeza, char empresa[]){
+void buscarPorEmpresa(Agendas* cabeza, const char *empresa){
   Agendas *actual = cabeza;
 
   while(actual != NULL){
     Experiencias *experienciaActual = actual->persona.experiencias;
     while (experienciaActual != NULL) {
-      // if(strcmp(experienciaActual->experiencia.empresa, empresa) == 0){
-      //   agregarPersona(&profesiones, actual->persona);
-      // }
+      printf("Cedula: %s\n", actual->persona.cedula);
+      if (strcmp(experienciaActual->experiencia.empresa, empresa) == 0) {
+        printf("Nombre: %s %s\n", actual->persona.nombre, actual->persona.apellido);
+        printf("Cedula: %s\n", actual->persona.cedula);
+        printf("Empresa: %s\n", experienciaActual->experiencia.empresa);
+        printf("Cargo: %s\n", experienciaActual->experiencia.cargo);
+        printf("\n");
+        break;
+      }
       experienciaActual = experienciaActual->sig;
     }
     actual = actual->sig;
   }
+}
+
+void eliminarPersona(Agendas **cabeza){
+  char cedula[100];
+  printf("Ingrese la cédula de la persona a eliminar: ");
+  scanf("%s", cedula);
+
+  Agendas *actual = *cabeza;
+  Agendas *anterior = NULL;
+  if(actual != NULL && strcmp(actual->persona.cedula, cedula) == 0){
+    *cabeza = actual->sig;
+    free(actual);
+    return;
+  }
+
+  while(actual != NULL && strcmp(actual->persona.cedula, cedula) != 0){
+    anterior = actual;
+    actual = actual->sig;
+  }
+
+  if(actual == NULL){
+    printf("No se encontro la persona.\n");
+    return;
+  }
+
+  anterior->sig = actual->sig;
+  free(actual);
+}
+
+void contarPosgrados(Agendas *agenda) {
+  int especializacion = 0;
+  int maestria = 0;
+  int doctorado = 0;
+
+  Agendas *actual = agenda;
+  while (actual != NULL) {
+    Posgrados *posgradoActual = actual->persona.posgrados;
+    while (posgradoActual != NULL) {
+      if (strcmp(posgradoActual->posgrado.nivel, "Especializacion") == 0) {
+        (especializacion)++;
+      } else if (strcmp(posgradoActual->posgrado.nivel, "Maestria") == 0) {
+        (maestria)++;
+      } else if (strcmp(posgradoActual->posgrado.nivel, "Doctorado") == 0) {
+        (doctorado)++;
+      }
+      posgradoActual = posgradoActual->sig;
+    }
+    actual = actual->sig;
+  }
+
+  printf("Especialización: %d\n", especializacion);
+  printf("Maestría: %d\n", maestria);
+  printf("Doctorado: %d\n", doctorado);
 }

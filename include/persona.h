@@ -14,6 +14,8 @@ void agregarExperiencia(Experiencias **cabeza, Experiencia experiencia);
 void imprimirLista(Agendas* cabeza);
 void liberarMemoria(Agendas* cabeza);
 void buscarProfesion(Agendas* cabeza, Pregrado pregrado);
-void buscarPorEmpresa(Agendas* cabeza, char empresa[]);
+void buscarPorEmpresa(Agendas* cabeza, const char *empresa);
+void eliminarPersona(Agendas **cabeza);
+void contarPosgrados(Agendas *agenda);
 
 #endif

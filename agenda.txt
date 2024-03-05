@@ -28,3 +28,108 @@ Lic. en Negocios 2
 Licenciatura
 Lic. en Negocios
 Licenciatura
+00
+123456789
+Juan2
+Perez2
+Calle 123
+123456789
+juan@example.com
+AB
+01
+Arquitectura
+02
+Lic. en Negocios 2
+Licenciatura
+Lic. en Negocios
+Licenciatura
+00
+123456789
+Juan2
+Perez2
+Calle 123
+123456789
+juan@example.com
+AB
+01
+Arquitectura
+02
+Lic. en Negocios 2
+Licenciatura
+Lic. en Negocios
+Licenciatura
+00
+123456789
+Juan2
+Perez2
+Calle 123
+123456789
+juan@example.com
+AB
+01
+Arquitectura
+02
+Lic. en Negocios 2
+Licenciatura
+Lic. en Negocios
+Licenciatura
+00
+123456789
+Juan2
+Perez2
+Calle 123
+123456789
+juan@example.com
+AB
+01
+Arquitectura
+02
+Lic. en Negocios 2
+Licenciatura
+Lic. en Negocios
+Licenciatura
+00
+123456789
+Juan2
+Perez2
+Calle 123
+12345678
+juan@example.com
+AB
+01
+Arquitectura
+02
+Lic. en Negocios 2
+Licenciatura
+Lic. en Negocios
+Licenciatura
+00
+123456789
+Juan2
+Perez2
+Calle 123
+12345678
+juan@example.com
+AB
+01
+Arquitectura
+02
+Lic. en Negocios 2
+Licenciatura
+Lic. en Negocios
+Licenciatura
+00
+123456789
+Juan
+Perez
+Calle 123
+123456789
+juan@example.com
+AB
+01
+Arquitectura
+02
+Lic. en Negocios 2
+Licenciatura
+Lic. en Negocios
+Licenciatura

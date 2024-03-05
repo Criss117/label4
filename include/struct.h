@@ -12,7 +12,7 @@ typedef struct Posgrados{
 } Posgrados;
 
 typedef struct Pregrado{
-  char *titulo;
+  char titulo[100];
 } Pregrado;
 
 typedef struct Pregrados{
@@ -40,6 +40,7 @@ typedef struct Persona {
   char telefono[100];
   char email[100];
   char tipoSangre[3];
+  char fechaNacimiento[100];
   Pregrados *pregrados;
   Posgrados *posgrados;
   Experiencias *experiencias;

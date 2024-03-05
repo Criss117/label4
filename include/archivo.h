@@ -4,9 +4,9 @@
 #include "persona.h"
 
 #define FILENAME "agenda.txt"
-#define MAX_LINE_LENGTH 300
+#define MAX_LINE_LENGTH 100
 
 void leerArchivo();
-void guardarEnArchivo(Persona persona);
-
+void guardarEnArchivo(Agendas *cabeza);
+void leerArchivoSinGuardar();
 #endif

@@ -1,25 +1,30 @@
 00
 123456789
-Juan
-Perez
+Juan2
+Perez2
 Calle 123
 123456789
 juan@example.com
 AB
 01
 Arquitectura
-Ingeniería Civil
 02
 Lic. en Negocios 2
 Licenciatura
 Lic. en Negocios
 Licenciatura
-03
-empresa 2
-cargo 2
-2022-01-01
-2022-01-01
-empresa 1
-cargo 1
-2022-01-01
-2022-01-01
+00
+123456789
+Juan2
+Perez2
+Calle 123
+123456789
+juan@example.com
+AB
+01
+Arquitectura
+02
+Lic. en Negocios 2
+Licenciatura
+Lic. en Negocios
+Licenciatura

@@ -8,10 +8,12 @@
 
 
 void agregarPersona(Agendas** cabeza, Persona persona);
-void agregarPregrado(Pregrados **cabeza, char *nombrePregrado);
-void agregarPosgrado(Posgrados **cabeza, Posgrado posgradoInfo);
+void agregarPregrado(Pregrados **cabeza, Pregrado pregrado);
+void agregarPosgrado(Posgrados **cabeza, Posgrado posgrado);
 void agregarExperiencia(Experiencias **cabeza, Experiencia experiencia);
 void imprimirLista(Agendas* cabeza);
 void liberarMemoria(Agendas* cabeza);
+void buscarProfesion(Agendas* cabeza, Pregrado pregrado);
+void buscarPorEmpresa(Agendas* cabeza, char empresa[]);
 
 #endif

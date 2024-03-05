@@ -20,8 +20,8 @@ int main(){
   Agendas* cabezaAgendas = NULL;
 
   Pregrados *pregradosPersona1 = NULL;
-  agregarPregrado(&pregradosPersona1, "Ingeniería Civil");
-  agregarPregrado(&pregradosPersona1, "Arquitectura");
+  Pregrado pregradoInfo = {"Arquitectura"};
+  agregarPregrado(&pregradosPersona1, pregradoInfo);
 
   Posgrados *posgradosPersona1 = NULL;
   Posgrado posgradoInfo = {"Lic. en Negocios", "Licenciatura"};
@@ -35,7 +35,18 @@ int main(){
   agregarExperiencia(&experienciasPersona1, exp1);
   agregarExperiencia(&experienciasPersona1, exp2);
 
-  Persona persona1 = {"123456789", "Juan", "Perez", "Calle 123", "123456789", "juan@example.com", "AB", pregradosPersona1, posgradosPersona1, experienciasPersona1};
+  Persona persona1 = {"123456789", "Juan", "Perez", "Calle 123", "123456789", "juan@example.com", "AB", "24/08/21", pregradosPersona1, posgradosPersona1};
   agregarPersona(&cabezaAgendas, persona1);
+
+  Persona persona2 = {"123456789", "Juan2", "Perez2", "Calle 123", "123456789", "juan@example.com", "AB", "24/08/21", pregradosPersona1, posgradosPersona1};
+  agregarPersona(&cabezaAgendas, persona2);
+
+  // Pregrado pre = {"Ingenieria"};
+  // buscarProfesion(cabezaAgendas, pre);
+
+  // buscarPorEmpresa(cabezaAgendas, "empresa 1");
+
+  imprimirLista(cabezaAgendas);
+  guardarEnArchivo(cabezaAgendas);
   return 0;
 }

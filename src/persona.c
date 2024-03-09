@@ -20,19 +20,19 @@ void agregarPersona(Agendas** cabeza, Persona persona){
   nuevaAgenda->sig = *cabeza;
   *cabeza = nuevaAgenda;
 
-  // guardarEnArchivo(persona);
+  guardarEnArchivo(persona);
 }
 
 void agregarPregrado(Pregrados **cabeza, Pregrado pregrado) {
-    Pregrados *nuevosPregrados = (Pregrados*)malloc(sizeof(Pregrados));
-    if (nuevosPregrados == NULL) {
-      printf("Error: No se pudo asignar memoria.\n");
-      exit(1);
-    }
+  Pregrados *nuevosPregrados = (Pregrados*)malloc(sizeof(Pregrados));
+  if (nuevosPregrados == NULL) {
+    printf("Error: No se pudo asignar memoria.\n");
+    exit(1);
+  }
 
-    nuevosPregrados->pregrado = pregrado;
-    nuevosPregrados->sig = *cabeza;
-    *cabeza = nuevosPregrados;
+  nuevosPregrados->pregrado = pregrado;
+  nuevosPregrados->sig = *cabeza;
+  *cabeza = nuevosPregrados;
 }
 
 void agregarPosgrado(Posgrados** cabeza, Posgrado posgrado){
@@ -104,6 +104,7 @@ void imprimirLista(Agendas* cabeza){
     }
     
     actual = actual->sig;
+    printf("\n-------------------------\n");
   }
   printf("\n-----------Agenda:--------------\n");
 }

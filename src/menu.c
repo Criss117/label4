@@ -33,7 +33,7 @@ void menu(){
   do {
     printf("\nMenú:\n");
     printf("1. Leer archivo\n");
-    printf("2. Guardar archivo\n");
+    printf("2. Guardar archivo(no funciona)\n");
     printf("3. Agregar persona\n");
     printf("4. Eliminar persona\n");
     printf("5. Hacer consultas\n");
@@ -48,10 +48,10 @@ void menu(){
         leerArchivoSinGuardar();
         break;
       case 2:
-        guardarEnArchivo(cabezaAgendas); // Guardar solo una persona por ahora
+        printf("Por ahora no se puede guardar el archivo.\n"); // Guardar solo una persona por ahora
         break;
       case 3:
-        Persona nuevaPersona = leerDatosConsola(&cabezaAgendas);
+        Persona nuevaPersona = leerDatosConsola();
         agregarPersona(&cabezaAgendas, nuevaPersona);
         imprimirLista(cabezaAgendas);
         break;

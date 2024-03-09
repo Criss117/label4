@@ -7,6 +7,6 @@
 #define MAX_LINE_LENGTH 100
 
 void leerArchivo();
-void guardarEnArchivo(Agendas *cabeza);
+void guardarEnArchivo(Persona persona);
 void leerArchivoSinGuardar();
 #endif

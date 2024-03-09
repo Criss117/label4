@@ -41,17 +41,18 @@ int main(){
   // Persona persona1 = {"123456789", "Juan", "Perez", "Calle 123", "123456789", "juan@example.com", "AB", "24/08/21", pregradosPersona1, posgradosPersona1, experienciasPersona1};
   // agregarPersona(&cabezaAgendas, persona1);
 
-  
-
   // imprimirLista(cabezaAgendas);
   // Pregrado pre = {"Ingenieria"};
   // buscarProfesion(cabezaAgendas, pre);
-  // Persona nuevaPersona = leerDatosConsola(&cabezaAgendas);
+  // Persona nuevaPersona = leerDatosConsola();
   // agregarPersona(&cabezaAgendas, nuevaPersona);
+  // Persona nuevaPersona2 = leerDatosConsola();
+  // agregarPersona(&cabezaAgendas, nuevaPersona2);
   // buscarPorEmpresa(cabezaAgendas, "empresa 1");
   // contarPosgrados(cabezaAgendas);
   // guardarEnArchivo(cabezaAgendas);
   // eliminarPersona(&cabezaAgendas);
   // imprimirLista(cabezaAgendas);
+  leerArchivoSinGuardar();
   return 0;
 }

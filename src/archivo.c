@@ -6,60 +6,57 @@
 #include "persona.h"
 #include "archivo.h"
 
-void guardarEnArchivo(Agendas* cabeza){
-  FILE *fp = fopen(FILENAME, "a");
+void guardarEnArchivo(Persona persona){
+  FILE *fp = fopen(FILENAME, "w");
   if (fp == NULL) {
     printf("Error al abrir el archivo.\n");
     exit(1);
   }
-  Agendas *actual = cabeza;
-  while (actual != NULL) {
-    fprintf(fp, "00\n");
+  fprintf(fp, "00\n");
 
-    fprintf(fp, "%s\n", actual->persona.cedula);
-    fprintf(fp, "%s\n", actual->persona.nombre);
-    fprintf(fp, "%s\n", actual->persona.apellido);
-    fprintf(fp, "%s\n", actual->persona.direccion);
-    fprintf(fp, "%s\n", actual->persona.telefono);
-    fprintf(fp, "%s\n", actual->persona.email);
-    fprintf(fp, "%s\n", actual->persona.tipoSangre);
+  fprintf(fp, "%s\n", persona.cedula);
+  fprintf(fp, "%s\n", persona.nombre);
+  fprintf(fp, "%s\n", persona.apellido);
+  fprintf(fp, "%s\n", persona.direccion);
+  fprintf(fp, "%s\n", persona.telefono);
+  fprintf(fp, "%s\n", persona.email);
+  fprintf(fp, "%s\n", persona.tipoSangre);
 
-    if(actual->persona.pregrados != NULL){
-      fprintf(fp, "01\n");
+  if(persona.pregrados != NULL){
+    fprintf(fp, "01\n");
 
-      Pregrados *pregradoActual = actual->persona.pregrados;
-      while (pregradoActual != NULL) {
-        fprintf(fp, "%s\n", pregradoActual->pregrado.titulo);
-        pregradoActual = pregradoActual->sig;
-      }
+    Pregrados *pregradoActual = persona.pregrados;
+    while (pregradoActual != NULL) {
+      fprintf(fp, "%s\n", pregradoActual->pregrado.titulo);
+      pregradoActual = pregradoActual->sig;
     }
-
-    if(actual->persona.posgrados != NULL){
-      fprintf(fp, "02\n");
-
-      Posgrados *posgradoActual = actual->persona.posgrados;
-      while (posgradoActual != NULL) {
-        fprintf(fp, "%s\n", posgradoActual->posgrado.titulo);
-        fprintf(fp, "%s\n", posgradoActual->posgrado.nivel);
-        posgradoActual = posgradoActual->sig;
-      }
-    }
-
-    if(actual->persona.experiencias != NULL){
-      fprintf(fp, "03\n");
-
-      Experiencias *experienciasActual = actual->persona.experiencias;
-      while (experienciasActual != NULL) {
-        fprintf(fp, "%s\n", experienciasActual->experiencia.empresa);
-        fprintf(fp, "%s\n", experienciasActual->experiencia.cargo);
-        fprintf(fp, "%s\n", experienciasActual->experiencia.fechaInicio);
-        fprintf(fp, "%s\n", experienciasActual->experiencia.fechaFin);
-        experienciasActual = experienciasActual->sig;
-      }
-    }
-
-    fclose(fp);
   }
+
+  if(persona.posgrados != NULL){
+    fprintf(fp, "02\n");
+
+    Posgrados *posgradoActual = persona.posgrados;
+    while (posgradoActual != NULL) {
+      fprintf(fp, "%s\n", posgradoActual->posgrado.titulo);
+      fprintf(fp, "%s\n", posgradoActual->posgrado.nivel);
+      posgradoActual = posgradoActual->sig;
+    }
+  }
+
+  if(persona.experiencias != NULL){
+    fprintf(fp, "03\n");
+
+    Experiencias *experienciasActual = persona.experiencias;
+    while (experienciasActual != NULL) {
+      fprintf(fp, "%s\n", experienciasActual->experiencia.empresa);
+      fprintf(fp, "%s\n", experienciasActual->experiencia.cargo);
+      fprintf(fp, "%s\n", experienciasActual->experiencia.fechaInicio);
+      fprintf(fp, "%s\n", experienciasActual->experiencia.fechaFin);
+      experienciasActual = experienciasActual->sig;
+    }
+  }
+
+  fclose(fp);
   printf("Guardado exitosamente.\n");
 }
 
@@ -174,38 +171,9 @@ void leerArchivoSinGuardar(){
     exit(1);
   }
 
-
   while(fgets(linea, MAX_LINE_LENGTH, file)){
-    if(strcmp(linea, "00") == 0){
-
-      fgets(linea, MAX_LINE_LENGTH, file);
-      linea[strcspn(linea, "\n")] = 0;
-      printf("Cedula: %s\n", linea);
-
-      fgets(linea, MAX_LINE_LENGTH, file);
-      linea[strcspn(linea, "\n")] = 0;
-      printf("Nombre: %s\n", linea);
-
-      fgets(linea, MAX_LINE_LENGTH, file);
-      linea[strcspn(linea, "\n")] = 0;
-      printf("Apellido: %s\n", linea);
-
-      fgets(linea, MAX_LINE_LENGTH, file);
-      linea[strcspn(linea, "\n")] = 0;
-      printf("Direccion: %s\n", linea);
-
-      fgets(linea, MAX_LINE_LENGTH, file);
-      linea[strcspn(linea, "\n")] = 0;
-      printf("Telefono: %s\n", linea);
-
-      fgets(linea, MAX_LINE_LENGTH, file);
-      linea[strcspn(linea, "\n")] = 0;
-      printf("Email: %s\n", linea);
-
-      fgets(linea, MAX_LINE_LENGTH, file);
-      linea[strcspn(linea, "\n")] = 0;
-      printf("Tipo de Sangre: %s\n", linea);
-    }
+    linea[strcspn(linea, "\n")] = 0;
+    printf("%s\n", linea);
   }
   fclose(file);
 }
